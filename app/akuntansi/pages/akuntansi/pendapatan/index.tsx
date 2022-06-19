@@ -3,13 +3,13 @@ import { DashboardLayout } from "app/core/layouts/DashboardLayout"
 import { Performa } from "app/dashboard/components/Performa"
 import { BlitzPage } from "blitz"
 import { Menu, Transition } from "@headlessui/react"
-import { useState } from "react"
-import DropdownItem from "./component/dropdown/DropdownItem"
-import RiwayatTableItem from "./component/RiwayatTable/RiwayatTableItem"
-import RiwayatTableHeader from "./component/RiwayatTable/RiwayatTableHeader"
-import RiwayatTable from "./component/RiwayatTable/RiwayatTable"
-import TablePagination from "./component/TablePagination"
-import Dropdown from "./component/dropdown/Dropdown"
+import { Suspense, useState } from "react"
+import DropdownItem from "../../../component/dropdown/DropdownItem"
+import RiwayatTableItem from "../../../component/RiwayatTable/RiwayatTableItem"
+import RiwayatTableHeader from "../../../component/RiwayatTable/RiwayatTableHeader"
+import RiwayatTable from "../../../component/RiwayatTable/RiwayatTable"
+import TablePagination from "../../../component/TablePagination"
+import Dropdown from "../../../component/dropdown/Dropdown"
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -259,7 +259,9 @@ const DUMMY_DATA_PENGELUARAN = [
 
 PendapatanPage.getLayout = (page) => (
   <SidebarDashboardProvider>
-    <DashboardLayout>{page}</DashboardLayout>
+    <DashboardLayout>
+      <Suspense fallback="Loading...">{page}</Suspense>
+    </DashboardLayout>
   </SidebarDashboardProvider>
 )
 PendapatanPage.suppressFirstRenderFlicker = true

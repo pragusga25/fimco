@@ -2,6 +2,7 @@ import { SidebarDashboardProvider } from "app/core/contexts/SidebarDashboardCont
 import { DashboardLayout } from "app/core/layouts/DashboardLayout"
 import { Performa } from "app/dashboard/components/Performa"
 import { BlitzPage } from "blitz"
+import { Suspense } from "react"
 
 const PengeluaranPage: BlitzPage = () => {
   return (
@@ -14,7 +15,9 @@ const PengeluaranPage: BlitzPage = () => {
 
 PengeluaranPage.getLayout = (page) => (
   <SidebarDashboardProvider>
-    <DashboardLayout>{page}</DashboardLayout>
+    <DashboardLayout>
+      <Suspense fallback="Loading...">{page}</Suspense>
+    </DashboardLayout>
   </SidebarDashboardProvider>
 )
 PengeluaranPage.suppressFirstRenderFlicker = true
