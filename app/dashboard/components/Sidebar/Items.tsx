@@ -44,7 +44,7 @@ export const DashboardItems: FC = () => {
                 </Disclosure.Button>
                 <Disclosure.Panel className="flex flex-col items-end my-2">
                   {disclosureItems?.map((it) => (
-                    <Link href={path ?? ""} key={it.name}>
+                    <Link href={it.path ?? ""} key={it.name}>
                       <a className="flex items-center py-2 px-3 w-[95%] rounded bg-white hover:bg-gray-200">
                         <i className="w-6 h-6 relative">
                           <Image src={it.icon} layout="fill" alt="icon" />
